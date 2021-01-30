@@ -24,12 +24,23 @@ password
 
 zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysql -uzabbix -p zabbix
 
-d. Configure the database for Zabbix server
-Edit file /etc/zabbix/zabbix_server.conf
+mysql
+
+#show databases;
+# use zabbix;
+# show tables;
+# 
+##  Configure the database for Zabbix server
+
+sudo nano /etc/zabbix/zabbix_server.conf
 
 DBPassword=password
-e. Start Zabbix server and agent processes
-Start Zabbix server and agent processes and make it start at system boot.
+# Start Zabbix server and agent processes
+# Start Zabbix server and agent processes and make it start at system boot.
+
+sudo nano /etc/zabbix/apache.conf
+
+# php_value date.timezone Europe/Oslo           uncomment
 
 systemctl restart zabbix-server zabbix-agent apache2
 systemctl enable zabbix-server zabbix-agent apache2
